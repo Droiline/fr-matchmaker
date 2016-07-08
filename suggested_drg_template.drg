@@ -34,7 +34,7 @@ http://www1.flightrising.com/forums/gde/1601334 <!--drg home thread-->
 
       <YourProgramName>
         <!--this space can be used to store extra dragon data that your program needs-->
-        <!--the standard tag naming style is for tag that contain data to start with a lowercase letter and for tags containing other tags to start with an uppercase letter-->
+        <!--the standard tag naming style is for tags that contain data to start with a lowercase letter and for tags containing other tags to start with an uppercase letter-->
         <!--make sure your program is prepared to handle a file that doesnt yet contain your tag-->
       </YourProgramName>
 

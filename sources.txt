@@ -1,5 +1,6 @@
 ./src/flightrising/xml_parser/Node.java
-./src/flightrising/xml_parser/xmlParser.java
+./src/flightrising/xml_parser/XmlParser.java
+./src/flightrising/xml_parser/XmlElement.java
 ./src/flightrising/core/Dragon.java
 ./src/flightrising/core/Gene.java
 ./src/flightrising/core/Gender.java

@@ -1,0 +1,11 @@
+./flightrising/xml_parser/Node.java
+./flightrising/xml_parser/XmlParser.java
+./flightrising/xml_parser/XmlElement.java
+./flightrising/core/Dragon.java
+./flightrising/core/Gene.java
+./flightrising/core/Gender.java
+./flightrising/core/Breed.java
+./flightrising/core/Rarity.java
+./flightrising/core/Colour.java
+./flightrising/pairing/ColourRange.java
+./Main.java

@@ -1,23 +1,25 @@
 package flightrising.xml_parser;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Node<T> {
-    private T data;
+    private T datum;
     private Node<T> parent;
-    private List<Node<T>> children;
+    private ArrayList<Node<T>> children;
 
     public Node(T data) {
-        this.data = data;
+        this.datum = datum;
+        children = new ArrayList<Node<T>>();
     }
 
     private Node(T data, Node<T> parent) {
-        this.data = data;
+        this.datum = datum;
         this.parent = parent;
+        children = new ArrayList<Node<T>>();
     }
 
-    public T getData() {
-        return data;
+    public T getDatum() {
+        return datum;
     }
 
     public Node<T> getParent() {
@@ -28,12 +30,20 @@ public class Node<T> {
         this.parent = parent;
     }
 
-    public void addChild(T data) {
-        children.add(new Node<T>(data, this));
+    public void addChild(T datum) {
+        children.add(new Node<T>(datum, this));
     }
 
     public void addChild(Node<T> child) {
         child.setParent(this);
         children.add(child);
+    }
+
+    public boolean hasChild(Node<T> node) {
+        if (children.isEmpty()) {
+            return false;
+        } else {
+            return false;
+        }
     }
 }
