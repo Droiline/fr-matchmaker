@@ -1,6 +1,7 @@
 import flightrising.core.*;
 import flightrising.pairing.*;
 import flightrising.xml_parser.*;
+import java.io.*;
 
 public class Main{
     public static void main(String[] args) {
@@ -10,7 +11,14 @@ public class Main{
             Colour test = Colour.MAIZE;
             Node<String> dataTree;
             XmlParser parser = new XmlParser(args[0]);
-            dataTree = parser.parseXml();
+
+            try {
+                dataTree = parser.parseXml();
+            } catch (FileNotFoundException e) {
+                System.out.println("Invalid filepath.");
+            } catch (IOException e) {
+                System.out.println("Could not read file.");
+            }
         }
     }
 }

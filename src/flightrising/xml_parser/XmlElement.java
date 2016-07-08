@@ -4,6 +4,11 @@ public class XmlElement {
     private String tag;
     private String content;
 
+    XmlElement(String tag) {
+        this.tag = tag;
+        content = "empty";
+    }
+
     XmlElement(String tag, String content) {
         this.tag = tag;
         this.content = content;
@@ -15,5 +20,9 @@ public class XmlElement {
 
     public String getContent() {
         return content;
+    }
+
+    void setContent(String content) {
+        this.content = content;
     }
 }
