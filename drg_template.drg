@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8'?>
+//DRG Home Thread http://www1.flightrising.com/forums/gde/1601334
+<drg>
+  <Family>
+  <title>Master Demo Group</title>
+
+    //generic dragon specification
+    <Dragon>
+      <id>an ID number</id>
+      <name>Name in string form with consistant capitalization</name>
+      <parents>ID numbers in <int> tags</parents>
+      <children>ID numbers in <int> tags</children>
+
+      <hatchDay>Date of hatching in DD-MM-YYYY format</hatchDay>
+      <exalted>Boolian where false means not exaulted</exalted>
+      <matingType>Boolian where false means male</matingType>
+
+      <species>String of the exact species name, with capitals (EG: 'Spiral')</species>
+      <primary>
+        <color> capitalized color name </color>
+        <gene> capitalized gene name </gene>
+      <secondary>Same as Above</secondary>
+      <tertiary>Same as Above</tertiary>
+
+      <comment>Your text here.  Whatever you like.  Probably a string.  Rar!</comment>
+
+      <YOUR PROGRAM NAME HERE>
+        //Tags for information specific to each dragon your program needs.  Not a place for general non-dragon specific information that your program needs.
+        //Aslo be sure your program can generate these tags on the fly if a file without these tags is loaded.
+        //Also also be sure that other people's program's information is preserved, and not eaten.
+      </YOUR PROGRAM NAME HERE>
+    </Dragon>
+
+    // example dragon
+    <Dragon>
+      <id>194792</id>
+      <name>Floof</name>
+      <parents>
+        <int>24235</int>
+        <int>25751</int>
+      </parents>
+      <children>
+        <int>194888</int>
+        <int>194889</int>
+        <int>1948990</int>
+        <int>1949999</int>
+      </children>
+
+      <hatchDay>10-05-2015</hatchDay>
+      <exalted>False</exalted>
+      <matingType>True</matingType>
+
+      <species>Tundra</species>
+      <primary>
+        <color>Blue</color>
+        <gene>Basic</gene>
+      </primary>
+      <secondary>
+        <color>White</color>
+        <gene>Basic</gene>
+      </secondary>
+      <tertiary>
+        <color>Red</color>
+        <gene>Underbelly/<gene>
+      </tertiary>
+
+      <comment>The floofiest of all dragons.</comment>
+
+      <DragonTree>
+        <MainMate>FuzzBucket</MainMate>
+        <image>194792p.png</image>
+      </DragonTree>
+
+      <DAL9000> // here is some stuff my program would have.
+        <image>194792.gif</image>
+        <gen>1</gen>
+
+        <anestors2></anestors2>
+        <anestors3></anestors3>
+        <anestors4></anestors4>
+        <anestors5></anestors5>
+
+        <decendants2>990999 1000000</decendants2>
+        <decendants3>2346767</decendants3>
+        <decendants4>2857634</decendants4>
+        <decendants5></decendants5>
+
+        <xPos>200</xPos>
+        <yPos>100</yPos>
+      </DAL9000>
+    </Dragon>
+
+  </Family>
+
+</drg>
