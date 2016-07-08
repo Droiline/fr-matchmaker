@@ -5,42 +5,57 @@ http://www1.flightrising.com/forums/gde/1601334
         <Dragon>
             <id>24652106</id>
             <name>Lemon</name>
-            <parents>10, 11</parents>
+            <parents>22512685 19263265</parents>
 
             <exalted>false</exalted> <!--no-->
             <matingType>false</matingType> <!--male-->
 
             <species>Wildclaw</species>
             <primary>
-                <color>
-                    Latte
-                </color>
-                <gene>
-                    Cherub
-                </gene>
+                <color>Latte</color>
+                <gene>Cherub</gene>
             </primary>
             <secondary>
-                <color>
-                    Green
-                </color>
-                <gene>
-                    Butterfly
-                </gene>
+                <color>Green</color>
+                <gene>Butterfly</gene>
             </secondary>
             <tertiary>
-                <color>
-                    Metals
-                </color>
-                <gene>
-                    Underbelly
-                </gene>
+                <color>Metals</color>
+                <gene>Underbelly</gene>
             </tertiary>
 
             <!--End of shared data-->
 
             <matchmaker>
-                <!--All blood relatives (within five generations)that are not mentioned elsewhere should go here. It's ok if a relative is listed more than once-->
-                <relatives>22512685, 19263265</relatives>
+                <relatives></relatives>
+            </matchmaker>
+        </Dragon>
+        <Dragon>
+            <id>12</id>
+            <name>Liandrin</name>
+            <parents>9 10</parents>
+
+            <exalted>false</exalted> <!--no-->
+            <matingType>false</matingType> <!--male-->
+
+            <species>Wildclaw</species>
+            <primary>
+                <color>Slate</color>
+                <gene>Cherub</gene>
+            </primary>
+            <secondary>
+                <color>Green</color>
+                <gene>Butterfly</gene>
+            </secondary>
+            <tertiary>
+                <color>Chocolate</color>
+                <gene>Underbelly</gene>
+            </tertiary>
+
+            <!--End of shared data-->
+
+            <matchmaker>
+                <relatives></relatives>
             </matchmaker>
         </Dragon>
     </Family>
