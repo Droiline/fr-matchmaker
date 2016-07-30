@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-http://www1.flightrising.com/forums/gde/1601334
+<!--http://www1.flightrising.com/forums/gde/1601334-->
 <drg>
     <Family>
         <Dragon>
@@ -10,7 +10,7 @@ http://www1.flightrising.com/forums/gde/1601334
             <exalted>false</exalted> <!--no-->
             <matingType>false</matingType> <!--male-->
 
-            <species>Wildclaw</species>
+            <breed>Wildclaw</breed>
             <primary>
                 <color>Latte</color>
                 <gene>Cherub</gene>
@@ -38,7 +38,7 @@ http://www1.flightrising.com/forums/gde/1601334
             <exalted>false</exalted> <!--no-->
             <matingType>false</matingType> <!--male-->
 
-            <species>Wildclaw</species>
+            <breed>Wildclaw</breed>
             <primary>
                 <color>Slate</color>
                 <gene>Cherub</gene>

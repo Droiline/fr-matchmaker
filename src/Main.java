@@ -1,23 +1,30 @@
 import flightrising.core.*;
 import flightrising.pairing.*;
-import flightrising.xml_parser.*;
+// import flightrising.xml_parser.*;
 import java.io.*;
+import org.w3c.dom.*;
+import org.xml.sax.SAXException;
+import javax.xml.parsers.*;
 
 public class Main{
     public static void main(String[] args) {
         if (args.length != 1) {
-            System.out.println("Enter a file name.");
+            System.out.println("Give a filepath");
         } else {
-            Colour test = Colour.MAIZE;
-            Node<String> dataTree;
-            XmlParser parser = new XmlParser(args[0]);
+            DrgReader reader;
+            Dragon[] input;
 
             try {
-                dataTree = parser.parseXml();
-            } catch (FileNotFoundException e) {
-                System.out.println("Invalid filepath.");
+                reader = new DrgReader(args[0]);
+
+                input = reader.getDragons();
+                System.out.println(input[0].toString());
+            } catch (ParserConfigurationException e) {
+                System.out.println("Couldn't configure parser.");
+            } catch (SAXException e) {
+                System.out.println("What is a SAXException?");
             } catch (IOException e) {
-                System.out.println("Could not read file.");
+                System.out.println("IOException");
             }
         }
     }

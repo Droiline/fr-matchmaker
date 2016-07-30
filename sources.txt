@@ -1,11 +1,12 @@
 ./src/Main.java
 ./src/flightrising/pairing/ColourRange.java
+./src/flightrising/core/SecondaryGene.java
+./src/flightrising/core/PrimaryGene.java
 ./src/flightrising/core/Dragon.java
 ./src/flightrising/core/Gender.java
+./src/flightrising/core/DrgReader.java
 ./src/flightrising/core/Gene.java
 ./src/flightrising/core/Colour.java
+./src/flightrising/core/TertiaryGene.java
 ./src/flightrising/core/Rarity.java
 ./src/flightrising/core/Breed.java
-./src/flightrising/xml_parser/XmlElement.java
-./src/flightrising/xml_parser/XmlParser.java
-./src/flightrising/xml_parser/Node.java
