@@ -1,6 +1,7 @@
 package flightrising.core;
 
 import java.io.*;
+import java.util.*;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 import javax.xml.parsers.*;
@@ -21,7 +22,7 @@ public class DrgReader {
         return doc;
     }
 
-    public Dragon[] getDragons() {
+    public Lair getDragons() {
         NodeList nodes = doc.getElementsByTagName("Dragon");
         Element current;
         Element section;
@@ -33,9 +34,14 @@ public class DrgReader {
         PrimaryGene primGene;
         SecondaryGene secGene;
         TertiaryGene tertGene;
-        Dragon[] dragons = new Dragon[nodes.getLength()];
+        String parentString;
+        String relativeString;
+        String[] stringList;
+        Dragon dragon;
+        Lair lair = new Lair();
 
         for (int i = 0; i < nodes.getLength(); i++) {
+            HashSet<Integer> relativeSet = new HashSet<Integer>();
             current = (Element) nodes.item(i);
             breed = Breed.valueOf(current.getElementsByTagName("breed").item(0).getTextContent().toUpperCase());
             gender = current.getElementsByTagName("matingType").item(0).getTextContent() == "true" ? FEMALE : MALE;
@@ -50,7 +56,26 @@ public class DrgReader {
             tertCol = Colour.valueOf(section.getElementsByTagName("color").item(0).getTextContent().toUpperCase());
             tertGene = TertiaryGene.valueOf(section.getElementsByTagName("gene").item(0).getTextContent().toUpperCase());
 
-            dragons[i] = new Dragon(Integer.parseInt(current.getElementsByTagName("id").item(0).getTextContent()),
+            parentString = current.getElementsByTagName("parents").item(0).getTextContent();
+            relativeString = current.getElementsByTagName("relatives").item(0).getTextContent();
+
+            if(!parentString.isEmpty()) {
+                stringList = parentString.split(" ");
+
+                for (int j = 0; j < stringList.length; j++) {
+                    relativeSet.add(Integer.parseInt(stringList[j]));
+                }
+            }
+
+            if(!relativeString.isEmpty()) {
+                stringList = relativeString.split(" ");
+
+                for (int j = 0; j < stringList.length; j++) {
+                    relativeSet.add(Integer.parseInt(stringList[j]));
+                }
+            }
+
+            dragon = new Dragon(Integer.parseInt(current.getElementsByTagName("id").item(0).getTextContent()),
                                     current.getElementsByTagName("name").item(0).getTextContent(),
                                     breed,
                                     gender,
@@ -59,9 +84,11 @@ public class DrgReader {
                                     tertCol,
                                     primGene,
                                     secGene,
-                                    tertGene);
+                                    tertGene,
+                                    relativeSet);
+            lair.addDragon(dragon);
         }
 
-        return dragons;
+        return lair;
     }
 }

@@ -1,6 +1,7 @@
 ./Main.java
 ./flightrising/pairing/ColourRange.java
 ./flightrising/core/SecondaryGene.java
+./flightrising/core/Lair.java
 ./flightrising/core/PrimaryGene.java
 ./flightrising/core/Dragon.java
 ./flightrising/core/Gender.java

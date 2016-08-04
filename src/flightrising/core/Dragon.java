@@ -1,5 +1,7 @@
 package flightrising.core;
 
+import java.util.*;
+
 public class Dragon {
     private final int id;
     private String name;
@@ -11,6 +13,7 @@ public class Dragon {
     private PrimaryGene primaryGene;
     private SecondaryGene secondaryGene;
     private TertiaryGene tertiaryGene;
+    private HashSet<Integer> relatives;
 
     // public Dragon(int id) {
     //     this.id = id;
@@ -25,7 +28,7 @@ public class Dragon {
     //     tertiaryGene = TertiaryGene.BASIC;
     // }
 
-    public Dragon(int id, String name, Breed breed, Gender gender, Colour primCol, Colour secCol, Colour tertCol, PrimaryGene primGene, SecondaryGene secGene, TertiaryGene tertGene) {
+    public Dragon(int id, String name, Breed breed, Gender gender, Colour primCol, Colour secCol, Colour tertCol, PrimaryGene primGene, SecondaryGene secGene, TertiaryGene tertGene, HashSet<Integer> relatives) {
         this.id = id;
         this.name = name;
         this.breed = breed;
@@ -36,6 +39,7 @@ public class Dragon {
         primaryGene = primGene;
         secondaryGene = secGene;
         tertiaryGene = tertGene;
+        this.relatives = relatives;
     }
 
     public int getId() {
@@ -82,12 +86,29 @@ public class Dragon {
         return tertiaryGene;
     }
 
+    public HashSet<Integer> getRelatives() {
+        return relatives;
+    }
+
+    public void addRelative(int id) {
+        relatives.add(id);
+    }
+
     public String toString() {
         String newline = System.getProperty("line.separator");
+        String relativeString;
+
+        if (!relatives.isEmpty()) {
+            relativeString = relatives.toString();
+        } else {
+            relativeString = "noone";
+        }
+
         return newline + name + " - " + id + newline +
                 breed + newline +
                 primaryColour + " / " + primaryGene + newline +
                 secondaryColour + " / " + secondaryGene + newline +
-                tertiaryColour + " / " + tertiaryGene + newline;
+                tertiaryColour + " / " + tertiaryGene + newline +
+                "Related to: " + relativeString + newline;
     }
 }
