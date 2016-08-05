@@ -16,9 +16,19 @@ public class ColourRange{
             start = y;
             end = x;
         }
+
+        this.setRangeSet();
     }
 
-    public void setRangeSet() {
+    public Colour getStartColour() {
+        return start;
+    }
+
+    public Colour getEndColour() {
+        return end;
+    }
+
+    private void setRangeSet() {
         //If the difference between the two colours is half the colour wheel or less, return the range between those two colours. Otherwise take the other way around.
         if ((end.ordinal() - start.ordinal()) <= Colour.size / 2) {
             rangeSet = EnumSet.range(start, end);

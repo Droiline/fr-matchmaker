@@ -3,13 +3,13 @@ package flightrising.core;
 import java.util.*;
 
 public class Lair {
-    private LinkedHashMap<Integer, Dragon> dragons;
+    private TreeMap<Integer, Dragon> dragons;
 
     public Lair() {
-        dragons = new LinkedHashMap<Integer, Dragon>();
+        dragons = new TreeMap<Integer, Dragon>();
     }
 
-    public LinkedHashMap<Integer, Dragon> getDragons() {
+    public TreeMap<Integer, Dragon> getDragons() {
         return dragons;
     }
 
@@ -23,7 +23,7 @@ public class Lair {
 
     public void findRelations() {
         Boolean isRelated;
-        HashSet<Integer> intersection;
+        TreeSet<Integer> intersection;
         Boolean altered = true;
 
         while (altered) {
@@ -31,32 +31,56 @@ public class Lair {
 
             for (Map.Entry<Integer, Dragon> x : dragons.entrySet()) {
                 for (Map.Entry<Integer, Dragon> y : dragons.entrySet()) {
-                    if (x.getKey() != y.getKey()) {
-                        if (!y.getValue().getRelatives().contains(x.getKey())) {
-                            intersection = new HashSet<Integer>(x.getValue().getRelatives());
-                            intersection.retainAll(y.getValue().getRelatives());
-                            // System.out.println("Intersection between " + x.getValue().getName() + " and " + y.getValue().getName() + ": " + intersection);
+                    //if y is younger than x (avoids repeated comparisons)
+                    //and if they're not already named relatives
+                    if (x.getKey() < y.getKey() && !x.getValue().getRelatives().contains(y.getKey())) {
+                        intersection = new TreeSet<Integer>(x.getValue().getRelatives());
+                        intersection.retainAll(y.getValue().getRelatives());
 
-                            if (!intersection.isEmpty() && y.getKey() < x.getKey()) {
-                                for (Integer i : intersection) {
-                                    if (i < y.getKey()) {
-                                        y.getValue().addRelative(x.getKey());
-                                        altered = true;
-                                    }
+                        if (!intersection.isEmpty()) {
+                            for (Integer i : intersection) {
+                                if (i < x.getKey() || i < y.getKey()) {
+                                    y.getValue().addRelative(x.getKey());
+                                    altered = true;
                                 }
                             }
                         }
 
-                        if (!x.getValue().getRelatives().contains(y.getKey())) {
-                            if (y.getValue().getRelatives().contains(x.getKey())) {
-                                x.getValue().addRelative(y.getKey());
-                                altered = true;
-                            }
+                        if (y.getValue().getRelatives().contains(x.getKey())) {
+                            x.getValue().addRelative(y.getKey());
+                            altered = true;
                         }
                     }
                 }
             }
-            System.out.println(altered);
         }
+    }
+
+    public String getNamedRelationString(Dragon dragon) {
+        String nameString = "";
+
+        for (Integer x : dragon.getRelatives()) {
+            if (dragons.containsKey(x)) {
+                nameString = nameString.concat(dragons.get(x).getName() + " ");
+            }
+        }
+
+        return nameString;
+    }
+
+    public String toString() {
+        String newline = System.getProperty("line.separator");
+        String outString = "";
+        String relationString;
+
+        for (Map.Entry<Integer, Dragon> entry : dragons.entrySet()) {
+            outString = outString.concat(entry.getValue().toString() + newline);
+            relationString = getNamedRelationString(entry.getValue());
+            if (!relationString.isEmpty()) {
+                outString = outString.concat("Lair relatives: " + relationString + newline);
+            }
+        }
+
+        return outString;
     }
 }

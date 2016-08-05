@@ -13,7 +13,7 @@ public class Dragon {
     private PrimaryGene primaryGene;
     private SecondaryGene secondaryGene;
     private TertiaryGene tertiaryGene;
-    private HashSet<Integer> relatives;
+    private TreeSet<Integer> relatives;
 
     // public Dragon(int id) {
     //     this.id = id;
@@ -28,7 +28,7 @@ public class Dragon {
     //     tertiaryGene = TertiaryGene.BASIC;
     // }
 
-    public Dragon(int id, String name, Breed breed, Gender gender, Colour primCol, Colour secCol, Colour tertCol, PrimaryGene primGene, SecondaryGene secGene, TertiaryGene tertGene, HashSet<Integer> relatives) {
+    public Dragon(int id, String name, Breed breed, Gender gender, Colour primCol, Colour secCol, Colour tertCol, PrimaryGene primGene, SecondaryGene secGene, TertiaryGene tertGene, TreeSet<Integer> relatives) {
         this.id = id;
         this.name = name;
         this.breed = breed;
@@ -62,6 +62,10 @@ public class Dragon {
     //     this.breed = breed;
     // }
 
+    public Gender getGender() {
+        return gender;
+    }
+
     public Colour getPrimaryColour() {
         return primaryColour;
     }
@@ -86,12 +90,30 @@ public class Dragon {
         return tertiaryGene;
     }
 
-    public HashSet<Integer> getRelatives() {
+    public TreeSet<Integer> getRelatives() {
         return relatives;
     }
 
     public void addRelative(int id) {
         relatives.add(id);
+    }
+
+    public Boolean canBreedWith(Dragon other) {
+        Boolean canBreed = true;
+        TreeSet<Integer> sharedRelatives;
+
+        if (this.getGender() == other.getGender()) {
+            canBreed = false;
+        } else {
+            sharedRelatives = new TreeSet<Integer>(this.getRelatives());
+            sharedRelatives.retainAll(other.getRelatives());
+
+            if (!sharedRelatives.isEmpty()) {
+                canBreed = false;
+            }
+        }
+
+        return canBreed;
     }
 
     public String toString() {
@@ -109,6 +131,6 @@ public class Dragon {
                 primaryColour + " / " + primaryGene + newline +
                 secondaryColour + " / " + secondaryGene + newline +
                 tertiaryColour + " / " + tertiaryGene + newline +
-                "Related to: " + relativeString + newline;
+                "Related to: " + relativeString;
     }
 }

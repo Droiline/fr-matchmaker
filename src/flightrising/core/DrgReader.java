@@ -41,7 +41,7 @@ public class DrgReader {
         Lair lair = new Lair();
 
         for (int i = 0; i < nodes.getLength(); i++) {
-            HashSet<Integer> relativeSet = new HashSet<Integer>();
+            TreeSet<Integer> relativeSet = new TreeSet<Integer>();
             current = (Element) nodes.item(i);
             breed = Breed.valueOf(current.getElementsByTagName("breed").item(0).getTextContent().toUpperCase());
             gender = current.getElementsByTagName("matingType").item(0).getTextContent() == "true" ? FEMALE : MALE;

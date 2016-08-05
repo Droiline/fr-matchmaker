@@ -385,7 +385,7 @@
             <parents>273455 20229200</parents>
 
             <exalted>false</exalted> <!--no-->
-            <matingType>male</matingType> <!--male-->
+            <matingType>male</matingType>
 
             <breed>Wildclaw</breed>
             <primary>
@@ -405,6 +405,383 @@
 
             <matchmaker>
                 <relatives>24652106 25733485 25733486</relatives>
+            </matchmaker>
+        </Dragon>
+
+        <Dragon>
+            <id>24779998</id>
+            <name>Gibbon</name>
+            <parents>23594144 23284403</parents>
+
+            <exalted>false</exalted> <!--no-->
+            <matingType>female</matingType>
+
+            <breed>Wildclaw</breed>
+            <primary>
+                <color>Rust</color>
+                <gene>Poison</gene>
+            </primary>
+            <secondary>
+                <color>Mantis</color>
+                <gene>Butterfly</gene>
+            </secondary>
+            <tertiary>
+                <color>Forest</color>
+                <gene>Underbelly</gene>
+            </tertiary>
+
+            <!--End of shared data-->
+
+            <matchmaker>
+                <relatives></relatives>
+            </matchmaker>
+        </Dragon>
+
+        <Dragon>
+            <id>25552760</id>
+            <name>Grayam</name>
+            <parents>24254413 24176883</parents>
+
+            <exalted>false</exalted> <!--no-->
+            <matingType>male</matingType>
+
+            <breed>Coatl</breed>
+            <primary>
+                <color>Auburn</color>
+                <gene>Poison</gene>
+            </primary>
+            <secondary>
+                <color>Hunter</color>
+                <gene>Butterfly</gene>
+            </secondary>
+            <tertiary>
+                <color>Forest</color>
+                <gene>Circuit</gene>
+            </tertiary>
+
+            <!--End of shared data-->
+
+            <matchmaker>
+                <relatives></relatives>
+            </matchmaker>
+        </Dragon>
+
+        <Dragon>
+            <id>25626395</id>
+            <name>Steve</name>
+            <parents>23506990 22611761</parents>
+
+            <exalted>false</exalted> <!--no-->
+            <matingType>male</matingType>
+
+            <breed>Coatl</breed>
+            <primary>
+                <color>Fire</color>
+                <gene>Iridescent</gene>
+            </primary>
+            <secondary>
+                <color>Crocodile</color>
+                <gene>Butterfly</gene>
+            </secondary>
+            <tertiary>
+                <color>Hunter</color>
+                <gene>Underbelly</gene>
+            </tertiary>
+
+            <!--End of shared data-->
+
+            <matchmaker>
+                <relatives></relatives>
+            </matchmaker>
+        </Dragon>
+
+        <Dragon>
+            <id>25626396</id>
+            <name>Glamour</name>
+            <parents>23506990 22611761</parents>
+
+            <exalted>false</exalted> <!--no-->
+            <matingType>female</matingType>
+
+            <breed>Coatl</breed>
+            <primary>
+                <color>Tan</color>
+                <gene>Crystal</gene>
+            </primary>
+            <secondary>
+                <color>Pear</color>
+                <gene>Butterfly</gene>
+            </secondary>
+            <tertiary>
+                <color>Hunter</color>
+                <gene>Underbelly</gene>
+            </tertiary>
+
+            <!--End of shared data-->
+
+            <matchmaker>
+                <relatives></relatives>
+            </matchmaker>
+        </Dragon>
+
+        <Dragon>
+            <id>25708090</id>
+            <name>Samon</name>
+            <parents>23594144 23284403</parents>
+
+            <exalted>false</exalted> <!--no-->
+            <matingType>male</matingType>
+
+            <breed>Wildclaw</breed>
+            <primary>
+                <color>Copper</color>
+                <gene>Poison</gene>
+            </primary>
+            <secondary>
+                <color>Fern</color>
+                <gene>Shimmer</gene>
+            </secondary>
+            <tertiary>
+                <color>Forest</color>
+                <gene>Underbelly</gene>
+            </tertiary>
+
+            <!--End of shared data-->
+
+            <matchmaker>
+                <relatives></relatives>
+            </matchmaker>
+        </Dragon>
+
+        <Dragon>
+            <id>25733485</id>
+            <name>Jiska</name>
+            <parents>24652106 23946355</parents>
+
+            <exalted>false</exalted> <!--no-->
+            <matingType>female</matingType>
+
+            <breed>Coatl</breed>
+            <primary>
+                <color>Terracotta</color>
+                <gene>Cherub</gene>
+            </primary>
+            <secondary>
+                <color>Pear</color>
+                <gene>Butterfly</gene>
+            </secondary>
+            <tertiary>
+                <color>Fern</color>
+                <gene>Underbelly</gene>
+            </tertiary>
+
+            <!--End of shared data-->
+
+            <matchmaker>
+                <relatives></relatives>
+            </matchmaker>
+        </Dragon>
+
+        <Dragon>
+            <id>25733486</id>
+            <name>Valentine</name>
+            <parents>24652106 23946355</parents>
+
+            <exalted>false</exalted> <!--no-->
+            <matingType>male</matingType>
+
+            <breed>Wildclaw</breed>
+            <primary>
+                <color>Tangerine</color>
+                <gene>Cherub</gene>
+            </primary>
+            <secondary>
+                <color>Pear</color>
+                <gene>Butterfly</gene>
+            </secondary>
+            <tertiary>
+                <color>Crocodile</color>
+                <gene>Spines</gene>
+            </tertiary>
+
+            <!--End of shared data-->
+
+            <matchmaker>
+                <relatives></relatives>
+            </matchmaker>
+        </Dragon>
+
+        <Dragon>
+            <id>25757433</id>
+            <name>Maggie</name>
+            <parents>24678456 19263265</parents>
+
+            <exalted>false</exalted> <!--no-->
+            <matingType>female</matingType>
+
+            <breed>Coatl</breed>
+            <primary>
+                <color>Taupe</color>
+                <gene>Ripple</gene>
+            </primary>
+            <secondary>
+                <color>Fern</color>
+                <gene>Butterfly</gene>
+            </secondary>
+            <tertiary>
+                <color>Jungle</color>
+                <gene>Underbelly</gene>
+            </tertiary>
+
+            <!--End of shared data-->
+
+            <matchmaker>
+                <relatives></relatives>
+            </matchmaker>
+        </Dragon>
+
+        <Dragon>
+            <id>25757444</id>
+            <name>Tangela</name>
+            <parents>24678456 19263265</parents>
+
+            <exalted>false</exalted> <!--no-->
+            <matingType>female</matingType>
+
+            <breed>Wildclaw</breed>
+            <primary>
+                <color>Driftwood</color>
+                <gene>Ripple</gene>
+            </primary>
+            <secondary>
+                <color>Peridot</color>
+                <gene>Butterfly</gene>
+            </secondary>
+            <tertiary>
+                <color>Forest</color>
+                <gene>Underbelly</gene>
+            </tertiary>
+
+            <!--End of shared data-->
+
+            <matchmaker>
+                <relatives></relatives>
+            </matchmaker>
+        </Dragon>
+
+        <Dragon>
+            <id>25757445</id>
+            <name>Baroque</name>
+            <parents>24678456 19263265</parents>
+
+            <exalted>false</exalted> <!--no-->
+            <matingType>female</matingType>
+
+            <breed>Coatl</breed>
+            <primary>
+                <color>Driftwood</color>
+                <gene>Ripple</gene>
+            </primary>
+            <secondary>
+                <color>Green</color>
+                <gene>Butterfly</gene>
+            </secondary>
+            <tertiary>
+                <color>Jungle</color>
+                <gene>Underbelly</gene>
+            </tertiary>
+
+            <!--End of shared data-->
+
+            <matchmaker>
+                <relatives></relatives>
+            </matchmaker>
+        </Dragon>
+
+        <Dragon>
+            <id>25900836</id>
+            <name>TomatoPie</name>
+            <parents>24858555 24613602</parents>
+
+            <exalted>false</exalted> <!--no-->
+            <matingType>male</matingType>
+
+            <breed>Coatl</breed>
+            <primary>
+                <color>Tomato</color>
+                <gene>Piebald</gene>
+            </primary>
+            <secondary>
+                <color>Thicket</color>
+                <gene>Shimmer</gene>
+            </secondary>
+            <tertiary>
+                <color>Peacock</color>
+                <gene>Basic</gene>
+            </tertiary>
+
+            <!--End of shared data-->
+
+            <matchmaker>
+                <relatives></relatives>
+            </matchmaker>
+        </Dragon>
+
+        <Dragon>
+            <id>25900839</id>
+            <name>VermilionPie</name>
+            <parents>24858555 24613602</parents>
+
+            <exalted>false</exalted> <!--no-->
+            <matingType>male</matingType>
+
+            <breed>Coatl</breed>
+            <primary>
+                <color>Vermilion</color>
+                <gene>Piebald</gene>
+            </primary>
+            <secondary>
+                <color>Emerald</color>
+                <gene>Shimmer</gene>
+            </secondary>
+            <tertiary>
+                <color>Emerald</color>
+                <gene>Basic</gene>
+            </tertiary>
+
+            <!--End of shared data-->
+
+            <matchmaker>
+                <relatives></relatives>
+            </matchmaker>
+        </Dragon>
+
+        <Dragon>
+            <id>25900840</id>
+            <name>MaroonPie</name>
+            <parents>24858555 24613602</parents>
+
+            <exalted>false</exalted> <!--no-->
+            <matingType>male</matingType>
+
+            <breed>Coatl</breed>
+            <primary>
+                <color>Maroon</color>
+                <gene>Piebald</gene>
+            </primary>
+            <secondary>
+                <color>Emerald</color>
+                <gene>Shimmer</gene>
+            </secondary>
+            <tertiary>
+                <color>Peacock</color>
+                <gene>Basic</gene>
+            </tertiary>
+
+            <!--End of shared data-->
+
+            <matchmaker>
+                <relatives></relatives>
             </matchmaker>
         </Dragon>
     </Lair>
