@@ -22,9 +22,11 @@ public class DrgReader {
         return doc;
     }
 
-    public Lair getDragons() {
-        NodeList nodes = doc.getElementsByTagName("Dragon");
-        Element current;
+    public Lair[] getLairs() {
+        NodeList lairNodes = doc.getElementsByTagName("Lair");
+        Element currentLair;
+        NodeList dragonNodes;
+        Element currentDragon;
         Element section;
         Breed breed;
         Gender gender;
@@ -38,57 +40,72 @@ public class DrgReader {
         String relativeString;
         String[] stringList;
         Dragon dragon;
-        Lair lair = new Lair();
+        Lair lair;
+        Lair[] lairs = new Lair[lairNodes.getLength()];
 
-        for (int i = 0; i < nodes.getLength(); i++) {
-            TreeSet<Integer> relativeSet = new TreeSet<Integer>();
-            current = (Element) nodes.item(i);
-            breed = Breed.valueOf(current.getElementsByTagName("breed").item(0).getTextContent().toUpperCase());
-            gender = current.getElementsByTagName("matingType").item(0).getTextContent() == "true" ? FEMALE : MALE;
+        for (int i = 0; i < lairNodes.getLength(); i++) {
+            currentLair = (Element) lairNodes.item(i);
+            dragonNodes = currentLair.getElementsByTagName("Dragon");
 
-            section = (Element) current.getElementsByTagName("primary").item(0);
-            primCol = Colour.valueOf(section.getElementsByTagName("color").item(0).getTextContent().toUpperCase());
-            primGene = PrimaryGene.valueOf(section.getElementsByTagName("gene").item(0).getTextContent().toUpperCase());
-            section = (Element) current.getElementsByTagName("secondary").item(0);
-            secCol = Colour.valueOf(section.getElementsByTagName("color").item(0).getTextContent().toUpperCase());
-            secGene = SecondaryGene.valueOf(section.getElementsByTagName("gene").item(0).getTextContent().toUpperCase());
-            section = (Element) current.getElementsByTagName("tertiary").item(0);
-            tertCol = Colour.valueOf(section.getElementsByTagName("color").item(0).getTextContent().toUpperCase());
-            tertGene = TertiaryGene.valueOf(section.getElementsByTagName("gene").item(0).getTextContent().toUpperCase());
+            lair = new Lair();
 
-            parentString = current.getElementsByTagName("parents").item(0).getTextContent();
-            relativeString = current.getElementsByTagName("relatives").item(0).getTextContent();
+            for (int j = 0; j < dragonNodes.getLength(); j++) {
+                TreeSet<Integer> relativeSet = new TreeSet<Integer>();
+                currentDragon = (Element) dragonNodes.item(j);
+                breed = Breed.valueOf(currentDragon.getElementsByTagName("breed").item(0).getTextContent().toUpperCase());
+                gender = currentDragon.getElementsByTagName("matingType").item(0).getTextContent() == "true" ? FEMALE : MALE;
 
-            if(!parentString.isEmpty()) {
-                stringList = parentString.split(" ");
+                section = (Element) currentDragon.getElementsByTagName("primary").item(0);
+                primCol = Colour.valueOf(section.getElementsByTagName("color").item(0).getTextContent().toUpperCase());
+                primGene = PrimaryGene.valueOf(section.getElementsByTagName("gene").item(0).getTextContent().toUpperCase());
+                section = (Element) currentDragon.getElementsByTagName("secondary").item(0);
+                secCol = Colour.valueOf(section.getElementsByTagName("color").item(0).getTextContent().toUpperCase());
+                secGene = SecondaryGene.valueOf(section.getElementsByTagName("gene").item(0).getTextContent().toUpperCase());
+                section = (Element) currentDragon.getElementsByTagName("tertiary").item(0);
+                tertCol = Colour.valueOf(section.getElementsByTagName("color").item(0).getTextContent().toUpperCase());
+                tertGene = TertiaryGene.valueOf(section.getElementsByTagName("gene").item(0).getTextContent().toUpperCase());
 
-                for (int j = 0; j < stringList.length; j++) {
-                    relativeSet.add(Integer.parseInt(stringList[j]));
+                if (currentDragon.getElementsByTagName("parents").getLength() != 0) {
+                    parentString = currentDragon.getElementsByTagName("parents").item(0).getTextContent();
+
+                    if(!parentString.isEmpty()) {
+                        stringList = parentString.split(" ");
+
+                        for (int k = 0; k < stringList.length; k++) {
+                            relativeSet.add(Integer.parseInt(stringList[k]));
+                        }
+                    }
                 }
+
+                if (currentDragon.getElementsByTagName("relatives").getLength() != 0) {
+                    relativeString = currentDragon.getElementsByTagName("relatives").item(0).getTextContent();
+
+                    if(!relativeString.isEmpty()) {
+                        stringList = relativeString.split(" ");
+
+                        for (int k = 0; k < stringList.length; k++) {
+                            relativeSet.add(Integer.parseInt(stringList[k]));
+                        }
+                    }
+                }
+
+                dragon = new Dragon(Integer.parseInt(currentDragon.getElementsByTagName("id").item(0).getTextContent()),
+                                        currentDragon.getElementsByTagName("name").item(0).getTextContent(),
+                                        breed,
+                                        gender,
+                                        primCol,
+                                        secCol,
+                                        tertCol,
+                                        primGene,
+                                        secGene,
+                                        tertGene,
+                                        relativeSet);
+                lair.addDragon(dragon);
             }
 
-            if(!relativeString.isEmpty()) {
-                stringList = relativeString.split(" ");
-
-                for (int j = 0; j < stringList.length; j++) {
-                    relativeSet.add(Integer.parseInt(stringList[j]));
-                }
-            }
-
-            dragon = new Dragon(Integer.parseInt(current.getElementsByTagName("id").item(0).getTextContent()),
-                                    current.getElementsByTagName("name").item(0).getTextContent(),
-                                    breed,
-                                    gender,
-                                    primCol,
-                                    secCol,
-                                    tertCol,
-                                    primGene,
-                                    secGene,
-                                    tertGene,
-                                    relativeSet);
-            lair.addDragon(dragon);
+            lairs[i] = lair;
         }
 
-        return lair;
+        return lairs;
     }
 }

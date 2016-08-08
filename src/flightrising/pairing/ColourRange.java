@@ -41,4 +41,12 @@ public class ColourRange{
     public EnumSet getRangeSet() {
         return rangeSet;
     }
+
+    public boolean contains(Colour colour) {
+        if (rangeSet.contains(colour)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

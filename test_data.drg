@@ -2,6 +2,8 @@
 <!--http://www1.flightrising.com/forums/gde/1601334-->
 <drg>
     <Lair>
+        <title>Permanents</title>
+
         <Dragon>
             <id>24652106</id>
             <name>Lemon</name>
@@ -407,6 +409,10 @@
                 <relatives>24652106 25733485 25733486</relatives>
             </matchmaker>
         </Dragon>
+    </Lair>
+
+    <Lair>
+        <title>Temporary</title>
 
         <Dragon>
             <id>24779998</id>
@@ -783,6 +789,50 @@
             <matchmaker>
                 <relatives></relatives>
             </matchmaker>
+        </Dragon>
+    </Lair>
+
+    <Lair>
+        <title>Targets</title>
+
+        <Dragon>
+            <id>1</id>
+            <name>ThylacineMale</name>
+            <matingType>male</matingType>
+
+            <breed>Coatl</breed>
+            <primary>
+                <color>Rust</color>
+                <gene>Ripple</gene>
+            </primary>
+            <secondary>
+                <color>Peacock</color>
+                <gene>Butterfly</gene>
+            </secondary>
+            <tertiary>
+                <color>Hunter</color>
+                <gene>Thylacine</gene>
+            </tertiary>
+        </Dragon>
+
+        <Dragon>
+            <id>2</id>
+            <name>ThylacineFemale</name>
+            <matingType>female</matingType>
+
+            <breed>WildClaw</breed>
+            <primary>
+                <color>Stone</color>
+                <gene>Ripple</gene>
+            </primary>
+            <secondary>
+                <color>Green</color>
+                <gene>Butterfly</gene>
+            </secondary>
+            <tertiary>
+                <color>Hunter</color>
+                <gene>Thylacine</gene>
+            </tertiary>
         </Dragon>
     </Lair>
 </drg>

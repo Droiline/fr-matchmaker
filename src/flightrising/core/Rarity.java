@@ -3,22 +3,22 @@ package flightrising.core;
 public enum Rarity {
     PLENTIFUL, COMMON, UNCOMMON, LIMITED, RARE;
 
-    public double calcProbability(Rarity x, Rarity y) {
+    public double calcProbability(Rarity against) {
         double probability = 0;
         //Shortcut
-        if (x == y) {
+        if (this == against) {
             probability = 0.5;
         } else {
             Rarity a, b;
             Boolean swapped;
 
-            if (x.ordinal() < y.ordinal()) {
-                a = x;
-                b = y;
+            if (this.ordinal() < against.ordinal()) {
+                a = this;
+                b = against;
                 swapped = false;
             } else {
-                a = y;
-                b = x;
+                a = against;
+                b = this;
                 swapped = true;
             }
 

@@ -13,36 +13,40 @@ public class Main{
             System.out.println("Give a filepath");
         } else {
             DrgReader reader;
+            Lair[] lairs;
             Lair lair;
-            int dudeId = 25626395;
-            int laddyId = 25757445;
-            Dragon dude;
-            Dragon laddy;
-            Boolean canBreed;
+            Dragon target;
             BreedingPair pair;
 
             try {
                 reader = new DrgReader(args[0]);
-                lair = reader.getDragons();
+                lairs = reader.getLairs();
 
-                lair.findRelations();
+                System.out.println(lairs.length + " lairs found.");
 
-                dude = lair.getDragon(dudeId);
-                laddy = lair.getDragon(laddyId);
+                lair = lairs[0];
+                lair.mergeLairs(lairs[1]);
 
-                canBreed = dude.canBreedWith(laddy);
-                System.out.println(dude.getName() + " and " +
-                        laddy.getName() + " can breed: " + canBreed);
-                System.out.println();
-                
-                pair = new BreedingPair(dude, laddy);
+                Dragon melia = lair.getDragon(19263265);
+                Dragon magi = lair.getDragon(24678456);
 
+                target = lairs[2].getDragon(2);
+                pair = new BreedingPair(melia, magi);
+
+                System.out.println("Target: ");
+                System.out.println(target);
+                System.out.println("Parents: ");
+                System.out.println(melia);
+                System.out.println(magi);
+                System.out.println("Pair: ");
                 System.out.println(pair);
+                System.out.println();
+                System.out.println("Probability: " + pair.getBreedingProbability(target, true, true, false, true, true, true, false) * 100 + "%");
 
             } catch (ParserConfigurationException e) {
                 System.out.println("Couldn't configure parser.");
             } catch (SAXException e) {
-                System.out.println("What is a SAXException?");
+                System.out.println("Syntax error on the data file.");
             } catch (IOException e) {
                 System.out.println("IOException");
             }

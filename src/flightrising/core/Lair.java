@@ -21,6 +21,14 @@ public class Lair {
         dragons.put(derg.getId(), derg);
     }
 
+    public void removeDragon(int id) {
+        dragons.remove(id);
+    }
+
+    public void mergeLairs(Lair lair) {
+        dragons.putAll(lair.getDragons());
+    }
+
     public void findRelations() {
         Boolean isRelated;
         TreeSet<Integer> intersection;

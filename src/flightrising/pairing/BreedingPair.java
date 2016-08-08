@@ -35,6 +35,70 @@ public class BreedingPair {
         tertiaryRange = new ColourRange(x.getTertiaryColour(), y.getTertiaryColour());
     }
 
+    public double getBreedingProbability(Dragon target, boolean mBreed,
+            boolean mPrimCol, boolean mPrimGen, boolean mSecCol, boolean mSecGen,
+            boolean mTerCol, boolean mTerGen) {
+        double prob = 1;
+
+        if (mBreed) {
+            if (target.getBreed() == breeds[0] || target.getBreed() == breeds[1]) {
+                prob *= breeds[0].getRarity().calcProbability(breeds[1].getRarity());
+            } else {
+                return 0;
+            }
+        }
+
+        if (mPrimCol) {
+            if (primaryRange.contains(target.getPrimaryColour())) {
+                prob *= 1.0 / primaryRange.getRangeSet().size();
+            } else {
+                return 0;
+            }
+        }
+
+        if (mPrimGen) {
+            if (target.getPrimaryGene() == primaryGenes[0] || target.getPrimaryGene() == primaryGenes[1]) {
+                prob *= primaryGenes[0].getRarity().calcProbability(primaryGenes[1].getRarity());
+            } else {
+                return 0;
+            }
+        }
+
+        if (mSecCol) {
+            if (secondaryRange.contains(target.getSecondaryColour())) {
+                prob *= 1.0 / secondaryRange.getRangeSet().size();
+            } else {
+                return 0;
+            }
+        }
+
+        if (mSecGen) {
+            if (target.getSecondaryGene() == secondaryGenes[0] || target.getSecondaryGene() == secondaryGenes[1]) {
+                prob *= secondaryGenes[0].getRarity().calcProbability(secondaryGenes[1].getRarity());
+            } else {
+                return 0;
+            }
+        }
+
+        if (mTerCol) {
+            if (tertiaryRange.contains(target.getTertiaryColour())) {
+                prob *= 1.0 / tertiaryRange.getRangeSet().size();
+            } else {
+                return 0;
+            }
+        }
+
+        if (mTerGen) {
+            if (target.getTertiaryGene() == tertiaryGenes[0] || target.getTertiaryGene() == tertiaryGenes[1]) {
+                prob *= tertiaryGenes[0].getRarity().calcProbability(tertiaryGenes[1].getRarity());
+            } else {
+                return 0;
+            }
+        }
+
+        return prob;
+    }
+
     public String toString() {
         String newline = System.getProperty("line.separator");
 

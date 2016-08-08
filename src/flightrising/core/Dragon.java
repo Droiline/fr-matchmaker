@@ -126,8 +126,7 @@ public class Dragon {
             relativeString = "noone";
         }
 
-        return newline + name + " - " + id + newline +
-                breed + newline +
+        return name + " - " + id + newline + breed + newline +
                 primaryColour + " / " + primaryGene + newline +
                 secondaryColour + " / " + secondaryGene + newline +
                 tertiaryColour + " / " + tertiaryGene + newline +
