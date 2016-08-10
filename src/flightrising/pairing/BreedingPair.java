@@ -12,6 +12,8 @@ public class BreedingPair {
     private PrimaryGene[] primaryGenes;
     private SecondaryGene[] secondaryGenes;
     private TertiaryGene[] tertiaryGenes;
+    private double probPerEgg;
+    private double probPerNest;
 
     public BreedingPair(Dragon x, Dragon y) {
         ids = new int[2];
@@ -33,70 +35,102 @@ public class BreedingPair {
         primaryRange = new ColourRange(x.getPrimaryColour(), y.getPrimaryColour());
         secondaryRange = new ColourRange(x.getSecondaryColour(), y.getSecondaryColour());
         tertiaryRange = new ColourRange(x.getTertiaryColour(), y.getTertiaryColour());
+
+        probPerEgg = 0;
+        probPerNest = 0;
     }
 
-    public double getBreedingProbability(Dragon target, boolean mBreed,
+    public int[] getIds() {
+        return ids;
+    }
+
+    //the chance of said pair producing a certain offspring.
+    //the boolean inputs are switches to declare which aspects are to be taken into account
+    public void setBreedingProbability(Dragon target, boolean mBreed,
             boolean mPrimCol, boolean mPrimGen, boolean mSecCol, boolean mSecGen,
             boolean mTerCol, boolean mTerGen) {
+        boolean possible = true;
         double prob = 1;
 
-        if (mBreed) {
+        if (mBreed && possible) {
             if (target.getBreed() == breeds[0] || target.getBreed() == breeds[1]) {
                 prob *= breeds[0].getRarity().calcProbability(breeds[1].getRarity());
             } else {
-                return 0;
+                prob = 0;
+                possible = false;
             }
         }
 
-        if (mPrimCol) {
+        if (mPrimCol && possible) {
             if (primaryRange.contains(target.getPrimaryColour())) {
                 prob *= 1.0 / primaryRange.getRangeSet().size();
             } else {
-                return 0;
+                prob = 0;
+                possible = false;
             }
         }
 
-        if (mPrimGen) {
+        if (mPrimGen && possible) {
             if (target.getPrimaryGene() == primaryGenes[0] || target.getPrimaryGene() == primaryGenes[1]) {
                 prob *= primaryGenes[0].getRarity().calcProbability(primaryGenes[1].getRarity());
             } else {
-                return 0;
+                prob = 0;
+                possible = false;
             }
         }
 
-        if (mSecCol) {
+        if (mSecCol && possible) {
             if (secondaryRange.contains(target.getSecondaryColour())) {
                 prob *= 1.0 / secondaryRange.getRangeSet().size();
             } else {
-                return 0;
+                prob = 0;
+                possible = false;
             }
         }
 
-        if (mSecGen) {
+        if (mSecGen && possible) {
             if (target.getSecondaryGene() == secondaryGenes[0] || target.getSecondaryGene() == secondaryGenes[1]) {
                 prob *= secondaryGenes[0].getRarity().calcProbability(secondaryGenes[1].getRarity());
             } else {
-                return 0;
+                prob = 0;
+                possible = false;
             }
         }
 
-        if (mTerCol) {
+        if (mTerCol && possible) {
             if (tertiaryRange.contains(target.getTertiaryColour())) {
                 prob *= 1.0 / tertiaryRange.getRangeSet().size();
             } else {
-                return 0;
+                prob = 0;
+                possible = false;
             }
         }
 
-        if (mTerGen) {
+        if (mTerGen && possible) {
             if (target.getTertiaryGene() == tertiaryGenes[0] || target.getTertiaryGene() == tertiaryGenes[1]) {
                 prob *= tertiaryGenes[0].getRarity().calcProbability(tertiaryGenes[1].getRarity());
             } else {
-                return 0;
+                prob = 0;
+                possible = false;
             }
         }
 
-        return prob;
+        //if the two species are different, you get more eggs. can't remember the amounts so this is placeholder
+        if (possible) {
+            if (breeds[0] == breeds[1]) {
+                //two eggs
+                probPerNest = prob * 2;
+            } else {
+                //three eggs
+                probPerNest = prob * 3;
+            }
+        }
+
+        probPerEgg = prob;
+    }
+
+    public double getProbability() {
+        return probPerNest;
     }
 
     public String toString() {
@@ -109,6 +143,7 @@ public class BreedingPair {
                 "Secondary: " + secondaryGenes[0] + " - " + secondaryGenes[1] +
                 ", " + secondaryRange.getRangeSet() + newline +
                 "Tertiary: " + tertiaryGenes[0] + " - " + tertiaryGenes[1] +
-                ", " + tertiaryRange.getRangeSet();
+                ", " + tertiaryRange.getRangeSet() + newline +
+                "Probability; " + probPerNest;
     }
 }

@@ -17,32 +17,61 @@ public class Main{
             Lair lair;
             Dragon target;
             BreedingPair pair;
+            LinkedList<BreedingPair> pairs = new LinkedList<BreedingPair>();
+            // double totalProb = 0;
 
             try {
                 reader = new DrgReader(args[0]);
                 lairs = reader.getLairs();
 
-                System.out.println(lairs.length + " lairs found.");
-
                 lair = lairs[0];
                 lair.mergeLairs(lairs[1]);
+                lair.findRelations();
 
-                Dragon melia = lair.getDragon(19263265);
-                Dragon magi = lair.getDragon(24678456);
+                target = lairs[2].getDragon(1);
 
-                target = lairs[2].getDragon(2);
-                pair = new BreedingPair(melia, magi);
+                for (Map.Entry<Integer, Dragon> x : lair.getDragons().entrySet()) {
+                    for (Map.Entry<Integer, Dragon> y : lair.getDragons().entrySet()) {
+                        if (x.getKey() < y.getKey() && x.getValue().canBreedWith(y.getValue())) {
+                            pair = new BreedingPair(x.getValue(), y.getValue());
+                            pair.setBreedingProbability(target, true, true, false, true, true, true, false);
 
-                System.out.println("Target: ");
-                System.out.println(target);
-                System.out.println("Parents: ");
-                System.out.println(melia);
-                System.out.println(magi);
-                System.out.println("Pair: ");
-                System.out.println(pair);
+                            if (pair.getProbability() != 0.0) {
+                                boolean inserted = false;
+                                int count = 0;
+                                System.out.println(lair.getDragon(pair.getIds()[0]).getName() + " and " + lair.getDragon(pair.getIds()[1]).getName() +
+                                    ": " + pair.getProbability());
+
+                                while (!inserted) {
+                                    if (pairs.isEmpty()) {
+                                        pairs.addFirst(pair);
+                                        inserted = true;
+                                    } else if (pairs.size() == count) {
+                                        pairs.addLast(pair);
+                                        inserted = true;
+                                    } else if (pairs.get(count).getProbability() < pair.getProbability()) {
+                                        pairs.add(count, pair);
+                                        inserted = true;
+                                    }
+                                    count++;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                LinkedList<Integer> inUse = new LinkedList<Integer>();
                 System.out.println();
-                System.out.println("Probability: " + pair.getBreedingProbability(target, true, true, false, true, true, true, false) * 100 + "%");
+                for (BreedingPair p : pairs) {
+                    if (!inUse.contains(p.getIds()[0]) && !inUse.contains(p.getIds()[1])) {
+                        inUse.add(p.getIds()[0]);
+                        inUse.add(p.getIds()[1]);
+                        System.out.println(lair.getDragon(p.getIds()[0]).getName() + " and " + lair.getDragon(p.getIds()[1]).getName());
+                    }
+                }
 
+                System.out.println();
+                // System.out.println("Total probability: " + totalProb);
             } catch (ParserConfigurationException e) {
                 System.out.println("Couldn't configure parser.");
             } catch (SAXException e) {

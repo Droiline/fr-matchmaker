@@ -53,7 +53,7 @@ public class DrgReader {
                 TreeSet<Integer> relativeSet = new TreeSet<Integer>();
                 currentDragon = (Element) dragonNodes.item(j);
                 breed = Breed.valueOf(currentDragon.getElementsByTagName("breed").item(0).getTextContent().toUpperCase());
-                gender = currentDragon.getElementsByTagName("matingType").item(0).getTextContent() == "true" ? FEMALE : MALE;
+                gender = Gender.valueOf(currentDragon.getElementsByTagName("matingType").item(0).getTextContent().toUpperCase());
 
                 section = (Element) currentDragon.getElementsByTagName("primary").item(0);
                 primCol = Colour.valueOf(section.getElementsByTagName("color").item(0).getTextContent().toUpperCase());

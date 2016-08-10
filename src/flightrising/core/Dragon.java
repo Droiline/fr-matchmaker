@@ -103,12 +103,11 @@ public class Dragon {
         TreeSet<Integer> sharedRelatives;
 
         if (this.getGender() == other.getGender()) {
+            // System.out.println("Both " + other.getGender());
             canBreed = false;
         } else {
-            sharedRelatives = new TreeSet<Integer>(this.getRelatives());
-            sharedRelatives.retainAll(other.getRelatives());
-
-            if (!sharedRelatives.isEmpty()) {
+            if (relatives.contains(other.getId())) {
+                // System.out.println("Are related.");
                 canBreed = false;
             }
         }
