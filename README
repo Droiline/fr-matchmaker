@@ -1,0 +1,1 @@
+Welcome to the fr-matchmaker. Given a set of excisting dragons and a target, this program calculates the probability that each possible pairing has of producing that target and then prints them to the terminal. The optimal pairs are printed after that in order of preference.
